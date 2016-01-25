@@ -28,6 +28,12 @@ struct QTCOLLECTIONS_SHARED_EXPORT OrderedHashData
             lookup.insert(*i, i);
     }
 
+    void reserve(int size)
+    {
+        hash.reserve(size);
+        lookup.reserve(size);
+    }
+
     void clear()
     {
         hash.clear();
@@ -80,6 +86,10 @@ public:
         return *this;
     }
     // TODO: Move semantics if Q_COMPILER_RVALUE_REFS.
+
+    inline int capacity() const { return d->hash.capacity(); }
+    void reserve(int size) { return d->reserve(size); }
+    inline void squeeze() { d->reserve(1); }
 
     void swap(OrderedHash &other) { qSwap(d, other.d); }
 
