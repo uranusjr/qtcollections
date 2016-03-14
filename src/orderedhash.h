@@ -402,7 +402,7 @@ QList<T> OrderedHash<Key, T>::values() const
 
 template <typename Key, typename T>
 typename OrderedHash<Key, T>::iterator OrderedHash<Key, T>::erase(
-        OrderedHash<Key, T>::iterator it)
+        typename OrderedHash<Key, T>::iterator it)
 {
     Q_ASSERT_X(it.d == d.data(), "qtcollections::OrderedHash::erase",
                "The specified iterator argument 'it' is invalid");

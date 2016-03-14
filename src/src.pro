@@ -1,12 +1,10 @@
-QT      += core gui
+QT      += core
 
 greaterThan(QT_MAJOR_VERSION, 4) {
-    QT += widgets
     CONFIG += c++11
 }
 
-TARGET   = qtcollections
-TEMPLATE = lib
+TEMPLATE = subdirs
 
 include(../qtcollections.pri)
 

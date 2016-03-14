@@ -307,7 +307,10 @@ void OrderedHashTests::testToHash()
     hash.insert(2, "two");
 
     auto actual = hash.toHash();
-    QHash<int, QString> expected({{1, "one"}, {2, "two"}, {3, "one"}});
+    QHash<int, QString> expected;
+    expected[1] = "one";
+    expected[2] = "two";
+    expected[3] = "one";
     QCOMPARE(actual, expected);
 
     hash.insert(4, "four");
@@ -451,9 +454,11 @@ void OrderedHashTests::testConstIteration()
 void OrderedHashTests::testForeach()
 {
     auto keys = QList<int>() << 1 << 2 << 3 << 4;
-    auto comp = QHash<int, QString>({
-        {1, "one"}, {2, "two"}, {3, "three"}, {1, "four"},
-    });
+    QHash<int, QString> comp;
+    comp[1] = "one";
+    comp[2] = "two";
+    comp[3] = "three";
+    comp[1] = "four";
     foreach (int key, keys)
         hash.insert(key, comp.value(key));
 

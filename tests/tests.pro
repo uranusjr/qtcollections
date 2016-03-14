@@ -10,7 +10,7 @@ TEMPLATE  = app
 
 include(../qtcollections.pri)
 
-DEFINES += SRCDIR=\\\"$$PWD/../src\\\"
+DEFINES += SRCDIR=\\\"$$PWD/../src\\\" QTCOLLECTIONS_STATIC
 
 PRECOMPILED_HEADER += qtcollectionstest.h
 
