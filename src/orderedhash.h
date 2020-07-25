@@ -109,7 +109,8 @@ public:
     const T value(const Key &key) const { return d->hash.value(key); }
     const T value(const Key &key, const T &defaultValue) const
         { return d->hash.value(key, defaultValue); }
-    T &operator[](const Key &key) { return d->hash[key]; }
+    T &operator[](const Key &key)
+        { return !d->hash.contains(key) ? *insert(key, T()) : d->hash[key]; }
     const T operator[](const Key &key) const { return d->hash[key]; }
 
     QList<Key> keys() const;
